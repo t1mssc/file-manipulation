@@ -6,14 +6,14 @@ import org.junit.runner.RunWith
 
 @RunWith(Cucumber.class)
 @CucumberOptions (
-        features = "src/test/resources/features/file-reading.feature",
+        features = "src/test/resources/features/",
         glue = ["steps"],
         plugin = [
                 "pretty",
-                "html:target/cucumber-reports/file-reading.html",
-                "json:target/cucumber-reports/file-reading.json"
+                "html:src/test/resources/cucumber-reports/file-manipulation-report.html",
+                "json:src/test/resources/cucumber-reports/file-manipulation-report.json"
         ],
-        tags = "@beginner",
+        tags = "@intermediate",
         monochrome = true
 )
 class FileRunner {
