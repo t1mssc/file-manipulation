@@ -13,7 +13,7 @@ import org.junit.runner.RunWith
                 "html:src/test/resources/cucumber-reports/file-manipulation-report.html",
                 "json:src/test/resources/cucumber-reports/file-manipulation-report.json"
         ],
-        tags = "@intermediate",
+        tags = "@intermediate and @beginner",
         monochrome = true
 )
 class FileRunner {
