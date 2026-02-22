@@ -1,0 +1,24 @@
+{
+    "application": {
+        "name": "TestApp",
+        "version": "2.1.0",
+        "environment": "production"
+    },
+    "database": {
+        "host": "localhost",
+        "name": "testdb",
+        "port": 5432,
+        "credentials": {
+            "password": "dbpass123",
+            "username": "dbuser"
+        }
+    },
+    "api": {
+        "baseUrl": "https://api.prod.example.com",
+        "timeout": 30000,
+        "endpoints": {
+            "login": "/auth/login",
+            "users": "/api/v1/users"
+        }
+    }
+}

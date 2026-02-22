@@ -16,9 +16,7 @@ class FileReadingSteps {
     @Given("the test directory exists")
     void the_test_directory_exists() {
         def dir = new File("src/test/resources/testdata")
-        if (!dir.exists()) {
-            dir.mkdirs()
-        }
+        if (!dir.exists()) dir.mkdirs()
         assert dir.exists(), "Test data directory could not be created"
     }
 
@@ -133,6 +131,7 @@ class FileReadingSteps {
         assert properties.containsKey(key), "Property ${key} not found"
         assert properties[key] == expectedValue, "Property ${key}: expected '${expectedValue}', " +
                 "got '${properties[key]}'"
+
         println "✓ ${key} = ${expectedValue}"
     }
 }

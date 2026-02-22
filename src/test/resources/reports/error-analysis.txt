@@ -1,0 +1,73 @@
+============================================================
+               ERROR ANALYSIS REPORT                                  
+============================================================
+Generated at : 2026-02-22 16:42:19
+Total Entries : 10
+------------------------------------------------------------
+FATAL: 1
+ERROR: 3
+WARN: 2
+INFO: 4
+============================================================
+
+💀 [ FATAL ] - 1 occurrence(s)
+------------------------------------------------------------
+  Date      : 2024-02-19
+  Timestamp : 10:15:55
+  Thread    : main
+  Message   : System shutdown due to critical error
+
+❌ [ ERROR ] - 3 occurrence(s)
+------------------------------------------------------------
+  Date      : 2024-02-19
+  Timestamp : 10:15:30
+  Thread    : worker-2
+  Message   : Failed to process order #12345
+
+  Date      : 2024-02-19
+  Timestamp : 10:15:31
+  Thread    : worker-2
+  Message   : NullPointerException at OrderProcessor.java:145
+
+  Date      : 2024-02-19
+  Timestamp : 10:15:45
+  Thread    : worker-1
+  Message   : API timeout: /api/products
+
+⚠️ [ WARN ] - 2 occurrence(s)
+------------------------------------------------------------
+  Date      : 2024-02-19
+  Timestamp : 10:15:25
+  Thread    : worker-1
+  Message   : Slow query detected: 2.5s
+
+  Date      : 2024-02-19
+  Timestamp : 10:15:40
+  Thread    : worker-3
+  Message   : Memory usage: 85%
+
+ℹ️ [ INFO ] - 4 occurrence(s)
+------------------------------------------------------------
+  Date      : 2024-02-19
+  Timestamp : 10:15:23
+  Thread    : main
+  Message   : Application started
+
+  Date      : 2024-02-19
+  Timestamp : 10:15:24
+  Thread    : main
+  Message   : Database connection established
+
+  Date      : 2024-02-19
+  Timestamp : 10:15:35
+  Thread    : main
+  Message   : Processing batch job
+
+  Date      : 2024-02-19
+  Timestamp : 10:15:50
+  Thread    : main
+  Message   : Batch completed: 1000 records
+
+============================================================
+                     END OF REPORT                         
+============================================================

@@ -1,0 +1,22 @@
+
+User Statistics Report
+======================
+Generated: 2026-02-22 16:42:18
+                       
+Total Users: 5
+Active Users Count: 4
+Inactive Users Count: 1
+Unique Roles: administrator, user, guest, manager
+
+User Details: 
+- admin (administrator): active=true
+- john.doe (user): active=true
+- jane.smith (user): active=false
+- guest (guest): active=true
+- manager (manager): active=true
+                       
+Role Distribution: 
+- administrator: 1
+- user: 2
+- guest: 1
+- manager: 1

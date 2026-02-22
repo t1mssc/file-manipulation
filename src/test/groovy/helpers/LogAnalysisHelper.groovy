@@ -74,8 +74,8 @@ class LogAnalysisHelper {
         report << '               ERROR ANALYSIS REPORT                                  \n'
         report << '============================================================\n'
         report << "Generated at : ${timeStamp}\n"
-        report << "Total Errors : ${errorEntries.size()}\n"
-        report << '------------------------------------------------------------\n\n'
+        report << "Total Entries : ${errorEntries.size()}\n"
+        report << '------------------------------------------------------------\n'
         report << "FATAL: ${totalFatal}\n"
         report << "ERROR: ${totalError}\n"
         report << "WARN: ${totalWarn}\n"

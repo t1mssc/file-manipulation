@@ -1,0 +1,6 @@
+username,password,role,active
+admin,Admin@123,administrator,true
+john.doe,Pass123,user,true
+jane.smith,Test1456,user,false
+guest,Guest99,guest,true
+manager,Mgr@456,manager,true

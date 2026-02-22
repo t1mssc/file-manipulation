@@ -1,0 +1,10 @@
+2024-02-19 10:15:23 INFO [main] Application started
+2024-02-19 10:15:24 INFO [main] Database connection established
+2024-02-19 10:15:25 WARN [worker-1] Slow query detected: 2.5s
+2024-02-19 10:15:30 ERROR [worker-2] Failed to process order #12345
+2024-02-19 10:15:31 ERROR [worker-2] NullPointerException at OrderProcessor.java:145
+2024-02-19 10:15:35 INFO [main] Processing batch job
+2024-02-19 10:15:40 WARN [worker-3] Memory usage: 85%
+2024-02-19 10:15:45 ERROR [worker-1] API timeout: /api/products
+2024-02-19 10:15:50 INFO [main] Batch completed: 1000 records
+2024-02-19 10:15:55 FATAL [main] System shutdown due to critical error
