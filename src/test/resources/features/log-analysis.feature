@@ -31,7 +31,7 @@ Feature: File Analysis and Reporting
     Then the user should generate an error report
     And the error report should contain timestamps
     And the error report should contain error details
-    And the error report should be saved to "src/test/resources/log-reports/error-analysis.txt"
+    And the error report should be saved to "src/test/resources/reports/error-analysis.txt"
 
   Scenario: Identify performance issues from logs
     When the user parse the log file "src/test/resources/testdata/logs/app.log"
