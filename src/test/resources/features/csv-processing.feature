@@ -50,4 +50,4 @@ Feature: CSV File Processing for Data-Driven Testing
     Then the user should generate a summary reports
     And the report should contain user statistics
     And the report should contain "Total Users: 5"
-    And the report should be saved to "src/test/resources/csv-reports/user_summary.txt"
+    And the report should be saved to "src/test/resources/reports/user_summary.txt"

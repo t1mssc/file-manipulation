@@ -1,8 +1,8 @@
-package Helpers
+package helpers
 
 import groovy.json.JsonOutput
 
-class Helpers {
+class JsonConfigHelper {
 
     static def getNestedValue(Map jsonData, String path) {
         List<String> keys = path.split('\\.') as List<String>

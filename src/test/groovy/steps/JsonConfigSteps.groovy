@@ -1,11 +1,10 @@
 package steps
 
 import groovy.json.JsonSlurper
-import io.cucumber.docstring.DocString
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
-import Helpers.Helpers
+import helpers.JsonConfigHelper
 
 class JsonConfigSteps {
 
@@ -13,7 +12,7 @@ class JsonConfigSteps {
     def jsonData
 
     Map<String, Object> extractedData = [:]
-    Helpers helper = new Helpers()
+    JsonConfigHelper helper = new JsonConfigHelper()
 
     @Given("the user have a JSON config file {string}:")
     void the_user_have_a_json_config_file(String filePath, String content) {
@@ -23,8 +22,7 @@ class JsonConfigSteps {
             jsonFile.parentFile.mkdirs()
             jsonFile.text = content
             println "Created JSON file : ${jsonFile.absolutePath}"
-        }
-        else println "Using existing JSON file: ${jsonFile.absolutePath}"
+        } else println "Using existing JSON file: ${jsonFile.absolutePath}"
     }
 
     @When("the user load the JSON file {string}")

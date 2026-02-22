@@ -10,8 +10,8 @@ import org.junit.runner.RunWith
         glue = ["steps"],
         plugin = [
                 "pretty",
-                "html:src/test/resources/testing-reports/file-manipulation-report.html",
-                "json:src/test/resources/testing-reports/file-manipulation-report.json"
+                "html:target/cucumber-reports/file-manipulation-report.html",
+                "json:target/cucumber-reports/file-manipulation-report.json"
         ],
         //tags = "@intermediate and @beginner",
         monochrome = true
