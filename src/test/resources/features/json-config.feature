@@ -32,12 +32,14 @@ Feature: JSON Configuration File Management
         }
         """
 
+  @intermediate-advanced @json
   Scenario: Read and validate JSON structure
     When the user load the JSON file "src/test/resources/testdata/json/app-config.json"
     Then the JSON should have key "application"
     And the JSON should have key "database"
     And the JSON should have key "api"
 
+  @intermediate-advanced @json
   Scenario: Access nested JSON data
     When the user load the JSON file "src/test/resources/testdata/json/app-config.json"
     Then "application.name" should equal "TestApp"
@@ -45,6 +47,7 @@ Feature: JSON Configuration File Management
     And "database.credentials.username" should equal "dbuser"
     And "api.baseUrl" should equal "https://api.staging.example.com"
 
+  @intermediate-advanced @json
   Scenario: Modify and save JSON configuration
     When the user load the JSON file "src/test/resources/testdata/json/app-config.json"
     And the user update "application.environment" to "production"
@@ -52,6 +55,7 @@ Feature: JSON Configuration File Management
     And the user save the JSON to "src/test/resources/testdata/json/app-config-updated.json"
     Then the file "src/test/resources/testdata/json/app-config-updated.json" should exist
 
+  @intermediate-advanced @json
   Scenario: Extract and use nested JSON data
     When the user load the JSON file "src/test/resources/testdata/json/app-config.json"
     And the user extract database credentials
