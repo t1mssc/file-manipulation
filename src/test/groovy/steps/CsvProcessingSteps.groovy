@@ -16,7 +16,6 @@ class CsvProcessingSteps {
     def csvData = []
     def csvHeaders = []
     def filteredData = []
-    def statistics = [:]
 
     @Given("the user have CSV file {string} with content:")
     void the_user_have_csv_file_with_content(String csvFilePath, DocString content) {
