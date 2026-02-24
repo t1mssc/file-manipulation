@@ -18,6 +18,7 @@ Feature: File Analysis and Reporting
       2024-02-19 10:15:55 FATAL [main] System shutdown due to critical error
       """
 
+  @advanced @log-analysis
   Scenario: Parse and analyze log levels
     When the user parse the log file "src/test/resources/testdata/logs/app.log"
     Then the user identify 4 INFO messages
@@ -25,6 +26,7 @@ Feature: File Analysis and Reporting
     And the user identify 3 ERROR messages
     And the user identify 1 FATAL messages
 
+  @advanced @log-analysis
   Scenario: Extract and report errors with context
     When the user parse the log file "src/test/resources/testdata/logs/app.log"
     And the user extract all ERROR and FATAL messages
@@ -33,6 +35,7 @@ Feature: File Analysis and Reporting
     And the error report should contain error details
     And the error report should be saved to "src/test/resources/reports/error-analysis.txt"
 
+  @advanced @log-analysis
   Scenario: Identify performance issues from logs
     When the user parse the log file "src/test/resources/testdata/logs/app.log"
     And the user analyze the performance warnings
