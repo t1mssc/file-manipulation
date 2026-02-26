@@ -24,9 +24,7 @@ class LogAnalysisSteps {
             logFile.parentFile.mkdirs()
             logFile.text = docString
             println "Created Log file: ${logFile.absolutePath}"
-        } else {
-            println "Using existing Log file: ${logFile.absolutePath}"
-        }
+        } else println "Using existing Log file: ${logFile.absolutePath}"
     }
 
     @When("the user parse the log file {string}")
