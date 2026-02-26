@@ -99,8 +99,8 @@ class LogAnalysisSteps {
         assert errorReport.contains('Thread    :'), 'Report should contain Thread field'
         assert errorReport.contains("Message   :"), 'Report should contain Message field'
 
+        def logLevel = ['FATAL', 'ERROR']
 
-        def logLevel = ['FATAL', 'ERROR', 'WARN', 'INFO']
         logLevel.each { level ->
             def entriesForLevel = logEntries.findAll { it.level == level }
             if (entriesForLevel.size() > 0) {
@@ -109,7 +109,8 @@ class LogAnalysisSteps {
             }
         }
 
-        logEntries.each { entry ->
+        def errorAndFatal = logEntries.findAll { it.level in ['FATAL', 'ERROR'] }
+        errorAndFatal.each { entry ->
             assert errorReport.contains(entry.message), "Report should contain ${entry.message}"
             assert errorReport.contains(entry.thread), "Report should contain ${entry.thread}"
         }

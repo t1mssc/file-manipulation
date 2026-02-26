@@ -55,39 +55,36 @@ class LogAnalysisHelper {
         return recommend
     }
 
-    static def generateReport (List errorEntries) {
+    static def generateReport(List errorEntries) {
         if (!errorEntries || errorEntries.isEmpty()) return 'No entries found'
+        def filteredEntries = errorEntries.findAll { it.level in ['FATAL', 'ERROR'] }
+
+        if (filteredEntries.isEmpty()) return 'No FATAL or ERROR entries found'
 
         def report = new StringBuilder()
         def timeStamp = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern('yyyy-MM-dd HH:mm:ss'))
 
-        def groupedBy = errorEntries.groupBy { it.level }
-        def logLevel = ['FATAL', 'ERROR', 'WARN', 'INFO']
+        def groupedBy = filteredEntries.groupBy { it.level }
+        def logLevel = ['FATAL', 'ERROR'] 
 
         def totalFatal = groupedBy['FATAL']?.size() ?: 0
         def totalError = groupedBy['ERROR']?.size() ?: 0
-        def totalWarn = groupedBy['WARN']?.size() ?: 0
-        def totalInfo = groupedBy['INFO']?.size() ?: 0
 
         report << '============================================================\n'
-        report << '               ERROR ANALYSIS REPORT                                  \n'
+        report << '               ERROR ANALYSIS REPORT                       \n'
         report << '============================================================\n'
-        report << "Generated at : ${timeStamp}\n"
-        report << "Total Entries : ${errorEntries.size()}\n"
+        report << "Generated at  : ${timeStamp}\n"
+        report << "Total Entries : ${filteredEntries.size()}\n"
         report << '------------------------------------------------------------\n'
         report << "FATAL: ${totalFatal}\n"
         report << "ERROR: ${totalError}\n"
-        report << "WARN: ${totalWarn}\n"
-        report << "INFO: ${totalInfo}\n"
         report << '============================================================\n\n'
 
         logLevel.each { level ->
             def entries = groupedBy[level]
             if (entries) {
-                def icon = level == 'FATAL' ? '💀' :
-                        level == 'ERROR' ? '❌' :
-                                level == 'WARN'  ? "⚠️" : "ℹ️"
+                def icon = level == 'FATAL' ? '💀' : '❌'
 
                 report << "${icon} [ ${level} ] - ${entries.size()} occurrence(s)\n"
                 report << '------------------------------------------------------------\n'
@@ -100,6 +97,7 @@ class LogAnalysisHelper {
                 }
             }
         }
+
         report << '============================================================\n'
         report << '                     END OF REPORT                         \n'
         report << '============================================================\n'
