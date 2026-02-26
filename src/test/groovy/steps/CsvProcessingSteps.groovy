@@ -73,27 +73,59 @@ class CsvProcessingSteps {
         def activeCount = csvData.count { it.active == 'true' }
         def inactiveCount = csvData.count { it.active == 'false' }
         def roles = csvData.collect { it.role }.unique()
+        def roleDistribution = csvData.groupBy { it.role }
 
         def formattedDate = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern('yyyy-MM-dd HH:mm:ss'))
 
         reportContent = """
-User Statistics Report
-======================
-Generated: ${formattedDate}
-                       
-Total Users: ${csvData.size()}
-Active Users Count: ${activeCount}
-Inactive Users Count: ${inactiveCount}
-Unique Roles: ${roles.join(', ')}
+╔══════════════════════════════════════════════════════════════╗
+║                    USER STATISTICS REPORT                    ║
+╚══════════════════════════════════════════════════════════════╝
 
-User Details: 
-${csvData.collect { "- ${it.username} (${it.role}): active=${it.active}" }.join('\n')}
-                       
-Role Distribution: 
-${csvData.groupBy {it.role}
-                .collect {role, user -> "- ${role}: ${user.size()}" }
-                .join('\n')}
+  📅 Generated     : ${formattedDate}
+
+╔══════════════════════════════════════════════════════════════╗
+║                        SUMMARY                               ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+  👥 Total Users: ${csvData.size()}
+  ✅ Active Users: ${activeCount}
+  ❌ Inactive Users: ${inactiveCount}
+  🎭 Unique Roles: ${roles.size()}
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════╗
+║                    ROLE DISTRIBUTION                         ║
+╠══════════════════════════════════════════════════════════════╣
+${roleDistribution.collect { role, users ->
+            def activeInRole   = users.count { it.active == 'true' }
+            def inactiveInRole = users.count { it.active == 'false' }
+            """\
+  🎭 ${role.padRight(20)} Total Users: ${users.size()}
+     ${''.padRight(20)} Active Users Count: ${activeInRole}
+     ${''.padRight(20)} Inactive Users Count: ${inactiveInRole}
+  ------------------------------------------------------------"""
+        }.join('\n')}
+╚══════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════╗
+║                      USER DETAILS                            ║
+╠══════════════════════════════════════════════════════════════╣
+${csvData.collect { user ->
+            def status = user.active == 'true' ? '✅ Active  ' : '❌ Inactive'
+            """\
+  👤 Username : ${user.username}
+     Role     : ${user.role}
+     Status   : ${status}
+  ------------------------------------------------------------"""
+        }.join('\n')}
+╚══════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════╗
+║                       END OF REPORT                         ║
+╚══════════════════════════════════════════════════════════════╝
 """.stripIndent()
 
         println 'Generated report'
