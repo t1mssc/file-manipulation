@@ -1,20 +1,18 @@
 package runner
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
-import org.junit.runner.RunWith
+import org.junit.platform.suite.api.ConfigurationParameter
+import org.junit.platform.suite.api.IncludeEngines
+import org.junit.platform.suite.api.SelectClasspathResource
+import org.junit.platform.suite.api.Suite
+import static io.cucumber.junit.platform.engine.Constants.*
 
-@RunWith(Cucumber.class)
-@CucumberOptions (
-        features = "src/test/resources/features",
-        glue = ["steps"],
-        plugin = [
-                "pretty",
-                "html:target/cucumber-reports/file-manipulation-report.html",
-                "json:target/cucumber-reports/file-manipulation-report.json"
-        ],
-        //tags = "@intermediate and @beginner",
-        monochrome = true
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("features")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "steps")
+@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME,
+        value = "pretty,html:target/cucumber-reports/report.html,json:target/cucumber-reports/report.json"
 )
 class FileRunner {
 }
