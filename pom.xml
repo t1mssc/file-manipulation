@@ -8,35 +8,46 @@
     <artifactId>FileManipulationExercise</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <groovy-all.version>5.0.0</groovy-all.version>
+        <groovy.version>5.0.4</groovy.version>
+        <junit.version>4.13.2</junit.version>
+        <cucumber-java.version>7.34.2</cucumber-java.version>
+        <cucumber-junit.version>7.34.2</cucumber-junit.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>5.0.0</version>
+            <version>${groovy-all.version}</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.34.2</version>
+            <version>${cucumber-java.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.groovy</groupId>
             <artifactId>groovy</artifactId>
-            <version>5.0.4</version>
+            <version>${groovy.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>7.34.2</version>
+            <version>${cucumber-junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -74,17 +85,11 @@
                 <version>3.5.4</version>
                 <configuration>
                     <includes>
-                        <include>**/FileReading.groovy</include>
+                        <include>**/*.groovy</include>
                     </includes>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <maven.compiler.source>25</maven.compiler.source>
-        <maven.compiler.target>25</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
 </project>
